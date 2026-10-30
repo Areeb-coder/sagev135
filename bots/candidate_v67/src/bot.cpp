@@ -43,7 +43,7 @@ constexpr float kMaxUnlockTrips = 8.f;  // opening a walled-in altar is worth mo
 // costs roughly this many trips home and back on top of its own rounds.
 constexpr float kHealCost = 1.0f;
 // Tribute once the bag holds this many gems (or an altar is close): fewer trips, more farming.
-constexpr int kCarryGems = 40;
+constexpr int kCarryGems = 35;  // EXP-0029
 // Planning assumes this share of the paper damage: travel, retreats and stragglers
 // halve what a squad really deals (a golem group forecast at 19 rounds took 70).
 // Rough share of the team's damage that lands while fighting camps. 0.6 made big camps near our
