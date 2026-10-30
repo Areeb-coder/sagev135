@@ -2790,14 +2790,14 @@ void Bot::scout_ward(bc::champion& me) {
 
 bool Bot::altar_open(int index) const {
     if (altar_walls_open(index, false)) return true;
-    // Every altar looks walled in, yet the enemy just banked: one is open and we did not see the
-    // camp die (01boss-battle: they killed the monolith by the only altar at round 876 and banked
-    // seven times while we carried 1,000+ gems). Camps not seen alive lately count as gone, so
-    // we walk over and look.
-    if (!kAltarRecheck || round_ - enemy_banked_round_ > 100) return false;
-    for (int i = 0; i < static_cast<int>(world().altars.size()); ++i)
-        if (altar_walls_open(i, false)) return false;
-    return altar_walls_open(index, true);
+    // When the team or carrier has accumulated substantial gems (or enemy banked), check with stale_ok
+    // so we actually walk to verify and tribute rather than deadlocking forever.
+    if (kAltarRecheck && (round_ - enemy_banked_round_ <= 150 || gems_ >= 30)) {
+        for (int i = 0; i < static_cast<int>(world().altars.size()); ++i)
+            if (altar_walls_open(i, false)) return false;
+        return altar_walls_open(index, true);
+    }
+    return false;
 }
 
 bool Bot::altar_walls_open(int index, bool stale_ok) const {
