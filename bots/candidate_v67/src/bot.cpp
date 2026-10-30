@@ -35,7 +35,7 @@ constexpr int kCaptureRounds = 5;
 constexpr int kReplanRounds = 8;
 // Camps never heal, so a group too strong for one fight can be worn down over
 // several trips home to heal. Each trip spends about this share of team health.
-constexpr float kTripShare = 0.45f;
+constexpr float kTripShare = 0.50f;
 constexpr float kMaxTrips = 4.f;
 constexpr int kSiegeFrom = 500;  // rounds before sieges (other than walled-in altars)
 constexpr float kMaxUnlockTrips = 8.f;  // opening a walled-in altar is worth more
