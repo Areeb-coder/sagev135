@@ -157,7 +157,7 @@ constexpr bool kClusterSolos = false;
 // With the cluster fuel guard, out of 140 against v22 / a Cassi & Issac team / fishsim / hunter:
 // 71/119/100/111 (v22 70/118/97/111), 85 against 82 against a middle-holding stand-in (on).
 constexpr bool kSoloSafe = true;
-constexpr int kSoloDangerRounds = 60;  // siege-v8: avoid enemy-sighted areas longer for solos (was 40)
+constexpr int kSoloDangerRounds = 40;  // siege-v8: avoid enemy-sighted areas longer for solos (was 40)
 constexpr bool kHoldMiddle = true;
 constexpr float kHoldBonus = 1.5f;  // siege-v8: stronger squad grouping near contested altars (was 1.5)
 constexpr std::uint64_t kClusterPlanFloor = 35000;
@@ -232,7 +232,7 @@ constexpr int kLookTop = 5;
 constexpr int kLookNear = 6;
 constexpr float kLookDeadEnd = 0.85f;
 constexpr bool kCombatDash = true;
-constexpr float kDashKill = 3.f;  // Local v43 trial: dash earlier to finish reachable enemies.
+constexpr float kDashKill = 2.f;  // Local v43 trial: dash earlier to finish reachable enemies.
 // Fields on 8 of 70 maps. Out of 140 against the v24 test build / Cassi & Issac / fishsim / hunter:
 // 71/125/92/107; on the field maps 11 of 16 head to head, 11 against 8 of 16 against fishsim (on).
 constexpr bool kFieldCamp = true;
@@ -435,7 +435,7 @@ constexpr bool kCampWary = true;
 // early solo 64/108/85 (off).
 constexpr bool kSoftClusters = true;
 constexpr bool kBagCaution = true;
-constexpr int kBagCautionGems = 15;  // v49 trial: bank earlier under pressure to prevent repeated gem loss.
+constexpr int kBagCautionGems = 30;  // v49 trial: bank earlier under pressure to prevent repeated gem loss.
 constexpr bool kEarlySolo = false;
 // v18, from the v17 scrim on 00corners (46 camp clears to their 92; in a local replay every farming
 // champion had the same target in 72% of rounds, walking 36% of the time and waiting beside
