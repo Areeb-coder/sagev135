@@ -157,7 +157,7 @@ constexpr bool kClusterSolos = false;
 // With the cluster fuel guard, out of 140 against v22 / a Cassi & Issac team / fishsim / hunter:
 // 71/119/100/111 (v22 70/118/97/111), 85 against 82 against a middle-holding stand-in (on).
 constexpr bool kSoloSafe = true;
-constexpr int kSoloDangerRounds = 30;  // siege-v8: avoid enemy-sighted areas longer for solos (was 40)
+constexpr int kSoloDangerRounds = 20;  // siege-v8: avoid enemy-sighted areas longer for solos (was 40)
 constexpr bool kHoldMiddle = true;
 constexpr float kHoldBonus = 1.5f;  // siege-v8: stronger squad grouping near contested altars (was 1.5)
 constexpr std::uint64_t kClusterPlanFloor = 35000;
