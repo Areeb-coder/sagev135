@@ -159,7 +159,7 @@ constexpr bool kClusterSolos = false;
 constexpr bool kSoloSafe = true;
 constexpr int kSoloDangerRounds = 10;  // test further reduction from 20 to 15
 constexpr bool kHoldMiddle = true;
-constexpr float kHoldBonus = 1.5f;  // siege-v8: stronger squad grouping near contested altars (was 1.5)
+constexpr float kHoldBonus = 1.8f;  // siege-v8: stronger squad grouping near contested altars (was 1.5)
 constexpr std::uint64_t kClusterPlanFloor = 35000;
 // v23 test against Inter Fish (0-5, 0-1,037 on 00vault, 0-1,120 on 00stampede): we won 2 of 77
 // fights and lost 81 champions to their 4; even outnumbering them we dealt 22k to their 37k, their
