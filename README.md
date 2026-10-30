@@ -4,10 +4,10 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v151**
-- **Live Submission ID:** `eaad364b-8a6b-40dd-aaac-581b3129d829`
+## Current Active Champion: **Sage v152**
+- **Live Submission ID:** 56094a3f-c4a0-4cc2-a63c-a59050b558bc
 - **Git Commit:** `a9922b9` on branch `experiment/candidate-v67-improvements`
-- **Peak Performance:** **29W – 13L (+9,611 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
+- **Peak Performance:** **30W – 12L (+9,685 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
 
 ---
 
@@ -33,7 +33,8 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Official Match Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v151** | **EXP-0039** | Calibrate `kHoldBonus = 2.0f` (tighter squad grouping at contested altars) | **18W – 6L** (+6,680 gems) | **29W – 13L (+9,611 gems)** | Queueing next cycle | **ACTIVE CHAMPION** 👑 |
+| **v152** | **EXP-0043** | Calibrate kHoldBonus = 2.2f (peak contested altar priority & defensive grouping) | **19W – 5L** (+7,075 gems) | **30W – 12L (+9,685 gems)** | Queueing next cycle | **ACTIVE CHAMPION** 👑 |
+| **v151** | **EXP-0039** | Calibrate `kHoldBonus = 2.0f` (tighter squad grouping at contested altars) | **18W – 6L** (+6,680 gems) | **29W – 13L (+9,611 gems)** | Queueing next cycle | Promoted -> Superseded |
 | **v150** | **EXP-0036** | Tune `kHoldBonus = 1.8f` (from 1.5f) to prevent enemy tributes | **18W – 6L** (+6,482 gems) | **29W – 13L (+9,355 gems)** | 1-4 vs HighCortisol (1037-73 on starfish) | Promoted -> Superseded |
 | **v149** | **EXP-0029** | Calibrate `kCarryGems = 35` (down from 40; optimal trip tempo) | **17W – 7L** (+6,330 gems) | **28W – 14L (+8,555 gems)** | 4-1 vs Gilded Gold (Rank 161) | Promoted -> Superseded |
 | **v148** | **EXP-0015** | `kSoloDangerRounds = 10` (from 15; faster solo farming re-entry) | **17W – 7L** (+6,048 gems) | **27W – 15L (+7,036 gems)** | 5-0 vs Rank 162 | Promoted -> Superseded |
