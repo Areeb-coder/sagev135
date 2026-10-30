@@ -1,0 +1,22 @@
+/plan
+
+Read AGENTS.md completely and inspect the LockIN repository in read-only mode.
+
+Audit the exact Sage v135 source, Git history, all other Sage versions, CPP21, build system, current SDK/game rules, submission workflow, online match tooling, replay collection and analysis capabilities.
+
+Verify which claims are factual and which are unverified. In particular, verify whether the platform can genuinely queue exactly three official online unranked games total, one against each of the current top three opponents. If the queue system creates batches of five per opponent or cannot guarantee exactly three games, report that as a blocker and do not queue anything.
+
+Produce:
+1. Repository and bot/version inventory.
+2. Verified Sage v135 baseline commit and current champion/submission identity, if available.
+3. Build and SDK/API capability report.
+4. Existing tools and missing pipeline components.
+5. Strategic audit covering winning over farming, combat micro, communication, and pathfinding/map adaptation.
+6. Risks to the champion and active submission.
+7. A phased implementation plan with dependencies and acceptance criteria.
+8. Explicit blockers, unce  rtainties, and any required user decisions.
+
+STRICT READ-ONLY MODE:
+Do not edit or create project files, change branches, run gameplay matches, queue matches, upload or activate submissions, delete files, or alter the active submission. Do not make assumptions about CLI commands; inspect the installed CLI help and actual project configuration.
+
+Stop after presenting the audit and implementation plan. Wait for my explicit approval.

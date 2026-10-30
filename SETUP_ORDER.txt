@@ -1,0 +1,9 @@
+1. Extract this ZIP.
+2. Copy AGENTS.md to E:\Projects\Bot\LockIN\AGENTS.md.
+3. Open E:\Projects\Bot\LockIN in Antigravity.
+4. Paste PLAN_PROMPT.txt into Antigravity chat.
+5. Review the read-only audit and implementation plan.
+6. Approve implementation only after reviewing the blockers and safety controls.
+7. Paste GOAL_COMMAND.txt into Antigravity chat to set the ongoing objective.
+
+

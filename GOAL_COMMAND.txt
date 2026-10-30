@@ -1,0 +1,3 @@
+/goal
+
+Build and verify an evidence-driven, iterative optimization pipeline for our modified Sage v135 Cambridge Battlecode bot, targeting 1800+ Elo. Begin with a read-only audit, then implement the approved system described in AGENTS.md. Preserve the strongest validated bot, use only approved official online unranked competitive tests, and require my approval before source changes, match queueing, uploads, or activation.
