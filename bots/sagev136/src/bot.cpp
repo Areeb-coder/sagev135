@@ -1151,7 +1151,11 @@ float Bot::kill_value(const SeenChamp& e) const {
     // Damage it deals per point of health it has left: kill what hurts most and dies fastest.
     float v = std::max(e.dps, 1.f) / std::max(e.hp, 1.f);
     if (e.type == bc::champion_type::cassi) v *= 2.f;  // her death takes Issac with her
-    if (e.type == bc::champion_type::heart_of_ruin && e.hp > e.max_hp * 0.3f) v *= 0.6f;  // stronger as he bleeds
+    // High-priority targets: Marcella (high burst/economy carry) and Vesper Vale (high ranged DPS)
+    if (e.type == bc::champion_type::marcella) v *= 1.35f;
+    if (e.type == bc::champion_type::vesper_vale) v *= 1.25f;
+    // Heart of Ruin is extremely durable and gains +50% damage when low; avoid wasting focus fire on him while carries live
+    if (e.type == bc::champion_type::heart_of_ruin) v *= 0.5f;
     if (e.hp <= strength_ * 1.05f) v *= 4.f;  // dies to our next hit
     return v;
 }
@@ -1750,7 +1754,7 @@ bool Bot::dash_toward(bc::champion& me, vec2 target, int within) {
     if (cast_done_ || !can_cast_) return false;
     for (int i = 0; i < static_cast<int>(spells_.size()); ++i) {
         auto& s = spells_[i];
-        if (s.kind != bc::ability_kind::dash || !spell_ready(i)) continue;
+        if (s.kind != bc::ability_kind::dash || s.modifier > 0 || !spell_ready(i)) continue;
         vec2 best{-1, -1};
         int best_d = cheb(pos_, target);
         for (auto t : dash_landings())
@@ -1778,7 +1782,7 @@ bool Bot::dash_away(bc::champion& me, const std::vector<std::pair<vec2, int>>& t
     };
     for (int i = 0; i < static_cast<int>(spells_.size()); ++i) {
         auto& s = spells_[i];
-        if (s.kind != bc::ability_kind::dash || !spell_ready(i)) continue;
+        if (s.kind != bc::ability_kind::dash || s.modifier > 0 || !spell_ready(i)) continue;
         const auto& W = world();
         vec2 best{-1, -1};
         int best_s = safety(pos_), best_home = cheb(pos_, W.ally_centre);
