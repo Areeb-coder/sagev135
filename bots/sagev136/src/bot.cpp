@@ -558,9 +558,15 @@ const std::vector<BuildStep>& build_for(bc::champion_type t, bool protected_cast
                                                   {it::monster_shard_of_strength, 5},
                                                   {it::jungle_shard_of_health, 5},
                                                   {it::bruiser_shard_of_strength, 1 << 30}};
+    // Heart of Ruin: frontline bruiser tank. Durability and jungle mitigation, Focus emblem for shield/dash, then infinite Health.
+    static const std::vector<BuildStep> heart_f{{it::durability_shard_of_health, 5},
+                                                {it::jungle_shard_of_health, 5},
+                                                {it::bruiser_shard_of_focus, 5},
+                                                {it::bruiser_shard_of_health, 1 << 30}};
     // Focus builds: Marcella's spell, Heart of Ruin's dash and shield, Willow's heal.
     if (t == bc::champion_type::marcella) return protected_caster ? marcella_f : caster;
-    if (t == bc::champion_type::heart_of_ruin || t == bc::champion_type::willow) return caster;
+    if (t == bc::champion_type::heart_of_ruin) return heart_f;
+    if (t == bc::champion_type::willow) return caster;
     if (tank_type(t)) return kFightBuild ? tank_f : tank;
     return bc::champion{t}.base_stats().base_attack_range > 1 ? (kFightBuild ? earner_f : earner) : (kFightBuild ? fighter_f : fighter);
 }
@@ -1744,7 +1750,7 @@ bool Bot::dash_toward(bc::champion& me, vec2 target, int within) {
     if (cast_done_ || !can_cast_) return false;
     for (int i = 0; i < static_cast<int>(spells_.size()); ++i) {
         auto& s = spells_[i];
-        if (s.kind != bc::ability_kind::dash || s.modifier > 0 || !spell_ready(i)) continue;
+        if (s.kind != bc::ability_kind::dash || !spell_ready(i)) continue;
         vec2 best{-1, -1};
         int best_d = cheb(pos_, target);
         for (auto t : dash_landings())
@@ -1772,7 +1778,7 @@ bool Bot::dash_away(bc::champion& me, const std::vector<std::pair<vec2, int>>& t
     };
     for (int i = 0; i < static_cast<int>(spells_.size()); ++i) {
         auto& s = spells_[i];
-        if (s.kind != bc::ability_kind::dash || s.modifier > 0 || !spell_ready(i)) continue;
+        if (s.kind != bc::ability_kind::dash || !spell_ready(i)) continue;
         const auto& W = world();
         vec2 best{-1, -1};
         int best_s = safety(pos_), best_home = cheb(pos_, W.ally_centre);

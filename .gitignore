@@ -10,3 +10,8 @@ sdk/
 maps/
 cmake/
 bots/starter-*
+
+scrim-*.json
+test-match-*.json
+*.zip
+
