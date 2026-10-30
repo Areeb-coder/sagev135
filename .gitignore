@@ -1,0 +1,12 @@
+.cambc/
+bots/*/.cambc/
+matches/
+replays/
+bots/*/build/
+bots/*/target/
+*.zip
+*.wasm
+sdk/
+maps/
+cmake/
+bots/starter-*
