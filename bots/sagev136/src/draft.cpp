@@ -49,7 +49,7 @@ void play_draft() {
     // game. Without Vendetta and with both stunners (Marcella, Tavi), the 14 small-team maps went
     // 173/196 against 147/196 locally.
     constexpr std::array kSmall{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::ryth, champion_draft::tavi, champion_draft::vendetta, champion_draft::willow, champion_draft::varg, champion_draft::heart_of_ruin};
-    constexpr std::array kThree{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::heart_of_ruin, champion_draft::tavi, champion_draft::vendetta, champion_draft::ryth, champion_draft::willow, champion_draft::varg};
+    constexpr std::array kThree{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::tavi, champion_draft::vendetta, champion_draft::ryth, champion_draft::heart_of_ruin, champion_draft::willow, champion_draft::varg};
     const int team_size = cambc::draft::team_size();
     const bool small_team = team_size <= 4;
     constexpr std::array kSmallW{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::willow, champion_draft::ryth, champion_draft::tavi, champion_draft::vendetta, champion_draft::varg, champion_draft::heart_of_ruin};
