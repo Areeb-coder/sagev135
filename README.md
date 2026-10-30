@@ -4,10 +4,10 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v152**
-- **Live Submission ID:** 56094a3f-c4a0-4cc2-a63c-a59050b558bc
+## Current Active Champion: **Sage v153**
+- **Live Submission ID:** 39997db3-8d0c-432e-af31-0fe5285d8f6e
 - **Git Commit:** `a9922b9` on branch `experiment/candidate-v67-improvements`
-- **Peak Performance:** **30W – 12L (+9,685 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
+- **Peak Performance:** **29W – 13L (+9,735 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
 
 ---
 
@@ -33,7 +33,8 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Official Match Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v152** | **EXP-0043** | Calibrate kHoldBonus = 2.2f (peak contested altar priority & defensive grouping) | **19W – 5L** (+7,075 gems) | **30W – 12L (+9,685 gems)** | Queueing next cycle | **ACTIVE CHAMPION** 👑 |
+| **v153** | **EXP-0047** | Calibrate kTripShare = 0.50f (higher squad fight sustain before retreat) | **19W – 5L** (+6,945 gems) | **29W – 13L (+9,735 gems)** | Queueing next cycle | **ACTIVE CHAMPION** 👑 |
+| **v152** | **EXP-0043** | Calibrate kHoldBonus = 2.2f (peak contested altar priority & defensive grouping) | **19W – 5L** (+7,075 gems) | **30W – 12L (+9,685 gems)** | Queueing next cycle | Promoted -> Superseded |
 | **v151** | **EXP-0039** | Calibrate `kHoldBonus = 2.0f` (tighter squad grouping at contested altars) | **18W – 6L** (+6,680 gems) | **29W – 13L (+9,611 gems)** | Queueing next cycle | Promoted -> Superseded |
 | **v150** | **EXP-0036** | Tune `kHoldBonus = 1.8f` (from 1.5f) to prevent enemy tributes | **18W – 6L** (+6,482 gems) | **29W – 13L (+9,355 gems)** | 1-4 vs HighCortisol (1037-73 on starfish) | Promoted -> Superseded |
 | **v149** | **EXP-0029** | Calibrate `kCarryGems = 35` (down from 40; optimal trip tempo) | **17W – 7L** (+6,330 gems) | **28W – 14L (+8,555 gems)** | 4-1 vs Gilded Gold (Rank 161) | Promoted -> Superseded |
