@@ -2943,10 +2943,17 @@ bool Bot::tribute(bc::champion& me) {
     const bool sprint_finish = bc::global_submitted_gems(team::ally) >= 800 && gems_ >= 10;
     // With small bags, enemies seen in the last few rounds count too: they are still about.
     const bool threatened = kSmallBags ? enemy_recent(kRecentEnemy) : !enemies_.empty();
+    constexpr bool kWaitBank = true;
+    constexpr int kWaitBankMin = 5;
+    bool wait_bank = false;
+    if (kWaitBank && gems_ >= kWaitBankMin && task_ == Task::farm && target_ >= 0 && target_ == comms_.squad_target()) {
+        const auto& g = world().groups[target_];
+        if (g.state == GroupState::respawning) wait_bank = 2 * d + channel <= g.respawn_round - round_ + 3;
+    }
     // siege-v3: smart detour threshold. Detour up to 10 tiles only if carrying at least 10 gems;
     // or detour up to 4 tiles for any gems. This stops units abandoning camps to bank 2 gems!
     const bool near_altar = (d <= 10 && gems_ >= 6) || d <= 4;
-    const bool want = gems_ >= carry_gems() || endgame || wins || sprint_finish || near_altar || (threatened && gems_ >= kSmallBag) ||
+    const bool want = gems_ >= carry_gems() || endgame || wins || sprint_finish || near_altar || wait_bank || (threatened && gems_ >= kSmallBag) ||
                       task_ == Task::other;
     if (!want) {
         escort_wait_ = 0;
