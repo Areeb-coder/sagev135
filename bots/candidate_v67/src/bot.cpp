@@ -1146,8 +1146,9 @@ float Bot::kill_value(const SeenChamp& e) const {
     float v = std::max(e.dps, 1.f) / std::max(e.hp, 1.f);
     if (e.type == bc::champion_type::cassi) v *= 2.f;  // her death takes Issac with her
     // High-priority targets: Marcella (high burst/economy carry) and Vesper Vale (high ranged DPS)
-    if (e.type == bc::champion_type::marcella) v *= 1.35f;
-    if (e.type == bc::champion_type::vesper_vale) v *= 1.25f;
+    if (e.type == bc::champion_type::marcella) v *= 1.45f;
+    if (e.type == bc::champion_type::vesper_vale) v *= 1.35f;
+    if (e.type == bc::champion_type::tavi) v *= 1.20f;  // EXP-0110: prioritize eliminating Tavi (high focus stunner)
     // Heart of Ruin is extremely durable and gains +50% damage when low; avoid wasting focus fire on him while carries live
     if (e.type == bc::champion_type::heart_of_ruin) v *= 0.5f;
     if (e.hp <= strength_ * 1.05f) v *= 4.f;  // dies to our next hit
