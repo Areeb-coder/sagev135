@@ -1168,6 +1168,10 @@ float Bot::kill_value(const SeenChamp& e) const {
             v *= 0.65f; // avoid overfocusing full-health HoR while high-DPS carries live
         }
     }
+    // EXP-0131: Gem-Carrier Bounty Multiplier (Ranked Loss Pattern). Enemy carriers hoarding gems are high-value targets to intercept.
+    if (e.gems > 0) {
+        v *= (1.0f + std::min(static_cast<float>(e.gems) * 0.02f, 0.60f));
+    }
     if (e.hp <= strength_ * 1.05f) v *= 4.f;  // dies to our next hit
     return v;
 }
