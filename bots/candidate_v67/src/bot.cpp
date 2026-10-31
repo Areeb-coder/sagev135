@@ -2071,6 +2071,28 @@ bool Bot::fight_enemies(bc::champion& me) {
             return true;
         }
     }
+    // EXP-0120: Ranged kiting
+    if (target && ranged_ && target->reach <= 1 && cheb(target->pos, pos_) <= 1 && hp_ > max_hp_ * 0.35f && !clearly_losing) {
+        use_combat_spells(me, nullptr, target);
+        if (can_move_ && !moved_) {
+            vec2 best_step{0, 0};
+            int best_dist = -1;
+            for (auto d : kDirs) {
+                vec2 n = pos_ + d;
+                if (!free_tile(n)) continue;
+                int dist_to_target = cheb(n, target->pos);
+                if (dist_to_target > 1 && dist_to_target <= range_ && dist_to_target > best_dist) {
+                    best_dist = dist_to_target;
+                    best_step = d;
+                }
+            }
+            if (best_step != vec2{0, 0} && try_move(me, best_step)) {
+                if (can_attack_ && cheb(target->pos, pos_) <= range_) attack_target(me, target->handle, target->pos, target->hp);
+                hold_turns_ = 0;
+                return true;
+            }
+        }
+    }
     if (target && strike(*target)) {
         hold_turns_ = 0;
         return true;
