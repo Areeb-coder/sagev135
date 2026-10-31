@@ -99,3 +99,15 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 ├── track_v150_diagnostics.py # Automated online match monitoring and results parser
 └── README.md                 # Project documentation & benchmark history
 ```
+
+
+### Cycle 5 Multi-Opponent Evaluation (Sage v160 - Active Champion)
+Tested across 3 distinct tiers with strict 1-match-group-per-opponent constraint:
+- **Peer Tier (Rank 171 - FBOT5)**: **4W - 1L (80.0% Win Rate)**
+  - Won: `00lanes` (1004 vs 950), `01islands` (1000 vs 840), `02gift_wrapping` (1008 vs 998), `00gemfight` (1033 vs 178)
+  - Lost: `01the_farm` (542 vs 1020)
+- **Mid Tier (Rank 98 - deadlock worst game ever)**: **3W - 2L (60.0% Win Rate)**
+  - Won: `00lanes` (1008 vs 797), `02gift_wrapping` (1078 vs 865), `00gemfight` (1006 vs 200)
+  - Lost: `01the_farm` (329 vs 1024), `01islands` (764 vs 1007)
+- **Top Tier (Rank 4 - Ad Astra)**: **0W - 5L (0.0% Win Rate)**
+- **Aggregate Win Rate**: **7W - 8L (46.7%)** — *highest multi-opponent diversity win rate achieved to date*.
