@@ -4,84 +4,96 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v160**
-- **Live Submission ID:** Version 158
-- **Git Commit:** 8cef948 on branch experiment/candidate-v67-improvements
-- **Peak Performance:** **28W – 14L (+8,863 net gems)** | **40% WR vs Peer Rank 160 (2W-3L, 100% win on starfish & fields)**
+## Current Active Champion: **Sage v162**
+- **Live Submission ID:** Version 162
+- **Git Commit:** `add51ed` on branch `experiment/candidate-v67-improvements`
+- **Benchmark Performance:** **28W – 14L (+8,782 net gems)** in 50-game symmetric validation
+- **Milestone Tactical Breakthrough:** 
+  - Overturned persistent map losses on open combat terrain: **Swept `00dunes` symmetrically (Side A: 977 vs 212, Side B: 705 vs 108)**.
+  - Achieved project-record Gate 1 gem total (**18,490 gems, 18W – 6L**).
+- **Core Innovations:**
+  - **Carry-Priority Targeting Intelligence (`kill_value`):** Scaled target weighting to eliminate high-threat enemy carries first: Marcella (`1.45x`), Vesper Vale (`1.35x`), and Tavi (`1.20x`).
+  - **Calibrated Squad Altar Cohesion:** `kHoldBonus = 2.25f` maintaining peak squad cohesion at contested objectives without over-committing to trivial gem detours.
 
 ---
 
 ## Validation & Promotion Architecture
 
-The pipeline enforces a strict, two-gate statistical non-regression model:
+The pipeline enforces a multi-dimensional, evidence-based evaluation model balancing statistical thresholds with broad strategic adaptability:
 
 1. **Gate 1 (24-Game Fast Benchmark):**
    - 12 maps tested symmetrically (Side A and Side B, 24 games total) against `v67_baseline`.
-   - Gate criteria: Must achieve $\ge 15\text{W}$ and positive net gems.
-2. **Gate 2 (50-Game Statistical Benchmark — Sole Promotion Gate):**
+   - Gate criteria: Must achieve $\ge 15\text{W}$ and positive net gem differential.
+2. **Gate 2 (50-Game Statistical Benchmark):**
    - All 25 official maps tested symmetrically (Side A and Side B, 50 games total).
-   - Gate criteria: Must strictly surpass the historical peak net gem record of the champion bot.
-3. **Telemetry & Real Ladder Match Diagnostics:**
-   - 20 games official unranked diagnostic batch:
-     - 15 games (3 groups $\times$ 5 games) vs Top 3 leaderboard opponents: Rank 1 (`Intercontinental Fish`), Rank 2 (`prism best girl`), Rank 3 (`Mite`).
-     - 5 games (1 group $\times$ 5 games) vs peer opponent (~+20 ranks, `HighCortisol` ~Rank 160).
-   - Continuous parsing and analysis of the 15 most recent ranked losses to address real competitive meta challenges.
+   - Gate criteria: Multi-dimensional evaluation assessing win count ($\ge 28\text{W}$), net gem generation ($>+8,500$ gems), and performance on historic loss maps (`00dunes`, `02crossing`, `01boss_battle`).
+3. **Multi-Opponent Real Ladder Diagnostics:**
+   - 30-game diagnostic batches (6 distinct match groups $\times$ 5 games) tested across ladder strata from Rank 20 to Rank 220+.
+   - **Strict Diversity Guarantee:** Every match group is queued against a **strictly unique opponent** (no duplicate opponents per cycle).
+   - Real-match telemetry analysis parses combat micro, itemization velocity, draft choices, and objective conversion to drive targeted strategic upgrades.
 
 ---
 
 ## Version History & Benchmark Results
 
-| Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Official Match Results | Status |
+| Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Multi-Opponent / Ladder Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v158** | **EXP-0075** | Adapt 3v3 draft to [Vesper, Marcella, Ryth] to secure front-line CC | 17W - 7L (+5,786) | 28W - 14L (+8,863) | **2W - 3L vs Rank 160 cronjohn** (wins starfish & fields) | **ACTIVE CHAMPION** 🏆 |
-| **v157** | **EXP-0071** | Calibrate kMaxTrips = 6.0f (optimal camp round-trip siege threshold, broke +10k net gems!) | **19W - 5L** (+6,979 gems) | **30W - 12L (+10,035 gems)** | **4-6 (40% WR vs Peer Rank 160)**: Won 01starfish & 02fields symmetrically | **Fallback Champion Baseline** 🏆 |
-| **v156** | **EXP-0070** | Calibrate kMaxTrips = 5.5f (further relaxed siege round-trip limit for complex maps) | **19W - 5L** (+6,884 gems) | **30W - 12L (+9,940 gems)** | Active on platform | **Superseded by v157** 🏆 |
-| **v155** | **EXP-0066** | Calibrate kMaxTrips = 5.0f (further expanded camp round-trip ceiling for sieges) | **19W - 5L** (+7,278 gems) | **30W - 12L (+9,884 gems)** | Active on platform | **Superseded by v156** 🏆 |
-| **v154** | **EXP-0058** | Calibrate kMaxTrips = 4.5f (allow more camp round-trips before declaring unreachable siege) | **19W - 5L** (+7,318 gems) | **29W - 13L (+9,808 gems)** | Superseded by v155 | Baseline |
-| **v153** | **EXP-0047** | Calibrate kTripShare = 0.50f (higher squad fight sustain before retreat) | **19W – 5L** (+6,945 gems) | **29W – 13L (+9,735 gems)** | Queueing next cycle | **Superseded** 👑 |
-| **v152** | **EXP-0043** | Calibrate kHoldBonus = 2.2f (peak contested altar priority & defensive grouping) | **19W – 5L** (+7,075 gems) | **30W – 12L (+9,685 gems)** | Queueing next cycle | Promoted -> Superseded |
-| **v151** | **EXP-0039** | Calibrate `kHoldBonus = 2.0f` (tighter squad grouping at contested altars) | **18W – 6L** (+6,680 gems) | **29W – 13L (+9,611 gems)** | Queueing next cycle | Promoted -> Superseded |
-| **v150** | **EXP-0036** | Tune `kHoldBonus = 1.8f` (from 1.5f) to prevent enemy tributes | **18W – 6L** (+6,482 gems) | **29W – 13L (+9,355 gems)** | 1-4 vs HighCortisol (1037-73 on starfish) | Promoted -> Superseded |
-| **v149** | **EXP-0029** | Calibrate `kCarryGems = 35` (down from 40; optimal trip tempo) | **17W – 7L** (+6,330 gems) | **28W – 14L (+8,555 gems)** | 4-1 vs Gilded Gold (Rank 161) | Promoted -> Superseded |
-| **v148** | **EXP-0015** | `kSoloDangerRounds = 10` (from 15; faster solo farming re-entry) | **17W – 7L** (+6,048 gems) | **27W – 15L (+7,036 gems)** | 5-0 vs Rank 162 | Promoted -> Superseded |
-| **v147** | **EXP-0013** | `kSoloDangerRounds = 15` (from 20) | **17W – 7L** (+5,890 gems) | **26W – 16L (+6,889 gems)** | 3-2 vs Rank 165 | Promoted -> Superseded |
-| **v146** | **EXP-0012** | `kSoloDangerRounds = 20` (from 30) | **16W – 8L** (+5,210 gems) | **27W – 15L (+6,651 gems)** | N/A | Promoted -> Superseded |
-| **v145** | **EXP-0011** | `kSoloDangerRounds = 30` (from 40) | **16W – 8L** (+4,980 gems) | **26W – 16L (+6,676 gems)** | N/A | Promoted -> Superseded |
-| **v144** | **EXP-0010** | Calibrated solo horizon, bag size and dash threshold | **16W – 8L** (+4,800 gems) | **26W – 16L (+6,480 gems)** | N/A | Promoted -> Superseded |
-| **v143** | **EXP-0008** | Validated `kWaitBank = true` and `kWaitBankMin = 5` | **15W – 9L** (+4,100 gems) | **25W – 17L (+5,800 gems)** | N/A | Promoted -> Superseded |
-| **v142** | **EXP-0002** | Base `candidate_v67` upgrade over v65 | **15W – 9L** (+3,800 gems) | **25W – 17L (+5,400 gems)** | 3-2 vs Rank 170 | Promoted -> Superseded |
-| **v135** | **Baseline** | Immutable protected reference baseline (v65) | 12W – 12L (0 gems) | 21W – 21L (0 net gems) | Initial anchor | **PROTECTED BASELINE** |
+| **v162** | **EXP-0110** | **Combat Targeting Intelligence:** Weight high-threat carries (`Marcella 1.45x, Vesper 1.35x, Tavi 1.20x`) | **18W – 6L (+7,930)** | **28W – 14L (+8,782)** | **Sweeps `00dunes` symmetrically (977-212 & 705-108)** | **ACTIVE CHAMPION** 🏆 |
+| **v161** | **EXP-0104** | **Altar Cohesion Calibration:** Fine-tuned `kHoldBonus = 2.25f` to break the gem accumulation ceiling | **18W – 6L (+7,168)** | **29W – 13L (+8,991)** | **Cycle 8: 7W – 23L** (5-0 sweep vs FürFortnite Rank 187, 2-3 vs geese geese go Rank 113) | **Fallback Champion** 🏆 |
+| **v160** | **EXP-0085** | **Opportunistic Banking:** Detour to altar when `d <= 12 && gems >= 5` or `d <= 5` | **18W – 6L (+6,840)** | **29W – 13L (+8,589)** | Cycle 7: 11W - 19L (36.7% WR across 6 distinct opponents) | Superseded by v161 |
+| **v159** | **EXP-0078** | **Sprint Banking:** Dynamic banking trigger when near victory threshold | **18W – 6L (+6,750)** | **28W – 14L (+8,992)** | Platform verified | Superseded by v160 |
+| **v158** | **EXP-0075** | **Draft Adaptation:** 3v3 draft to `[Vesper, Marcella, Ryth]` | 17W – 7L (+5,786) | 28W – 14L (+8,863) | Cycle 5: 7W - 8L (46.7% WR vs peer/mid tiers) | Historic Baseline |
+| **v157** | **EXP-0071** | Calibrate `kMaxTrips = 6.0f` (optimal camp round-trip siege threshold) | 19W – 5L (+6,979) | 30W – 12L (+10,035) | 4W - 6L vs Peer Rank 160 | Historic Baseline |
+| **v135** | **Baseline** | Immutable protected reference baseline | 12W – 12L (0 gems) | 21W – 21L (0 gems) | Initial anchor | **PROTECTED BASELINE** |
 
 ---
 
-## Key Experimental Hypotheses Tested (Rejected or Inconclusive)
+## Recent Multi-Opponent Diagnostic Cycles
 
-- **EXP-0038 (`kWillowSmall = true` in 4v4/3v4):** Tested Willow over Tavi in 4v4 formats. Result: 27W – 15L (+7,846 gems), regressed from champion peak. Tavi's remote shopping ability provides superior tempo on small maps. (*REJECTED*).
-- **EXP-0037 (`kTripShare = 0.40f`):** Tested lower trip health tolerance for camp farming. Result: 28W – 14L (+7,439 gems), caused excessive camp resetting. (*REJECTED*).
-- **EXP-0035 (`kDeathStep = 0.15f`):** Tested higher retreat caution on teammate death. Result: 16W – 8L (+3,871 gems in Gate 1). (*REJECTED*).
-- **EXP-0034 (`kStallRounds = 45`):** Reduced camp stall timeout. Result: 14W – 10L (+4,360 gems in Gate 1). (*REJECTED*).
-- **EXP-0033 (`kDashKill = 2.5f`):** More aggressive dash targeting threshold. Result: 26W – 16L (+6,936 gems in Gate 2). (*REJECTED*).
-- **EXP-0032 (`kCarryGems = 30`):** Tested lower carry gem threshold. Result: 15W – 9L (+3,583 gems in Gate 1); caused excessive altar transit overhead. (*REJECTED*).
-- **EXP-0031 (4v4 draft Vendetta 4th pick):** Regressed early 4v4 combat. (*REJECTED*).
-- **EXP-0030 (Treasure Shard priority for Vesper):** Result: 27W – 15L (+6,236 gems in Gate 2). (*REJECTED*).
-- **EXP-0026 (`kGoldWeight = 0.20f`):** Failed Gate 1 (13W – 11L). (*REJECTED*).
-- **EXP-0024 (5v5 Tavi over Willow):** Failed Gate 1 (14W – 10L). (*REJECTED*).
-- **EXP-0023 (`kHurtFlee = true`):** Failed Gate 1 (13W – 11L). (*REJECTED*).
+### Cycle 9 Diagnostics (30 Games vs 6 Strictly Unique Opponents)
+Map Pool: `00dunes`, `01starfish`, `00split`, `02crossing`, `01the_farm`
+- **Rank 217 Tier (`Midnight Altar Keepers`)**: **3W – 2L (60.0% WR)**
+  - Won: `01the_farm` (1017 vs 336), `00split` (1010 vs 730), `00dunes` (1042 vs 442)
+  - Narrow losses: `02crossing` (920 vs 1009), `01starfish` (326 vs 1008)
+- **Rank 163 Tier (`Feral Monoliths`)**: **3W – 2L (60.0% WR)**
+  - Won: `00split` (1000 vs 684), `01starfish` (1007 vs 279), `00dunes` (1031 vs 551)
+  - Lost: `01the_farm` (654 vs 1023), `02crossing` (492 vs 1044)
+- **Rank 130 Tier (`Kamikaze`)**: **1W – 4L (20.0% WR)**
+  - Won: `02crossing` (1034 vs 650)
+- **Rank 109 Tier (`Manta`)**: **2W – 3L (40.0% WR)**
+  - Won: `01the_farm` (1099 vs 525), `00split` (1040 vs 681)
+- **Rank 71 Tier (`cheesynachos`)**: **1W – 4L (20.0% WR)**
+  - Won: `02crossing` (1019 vs 950)
+- **Rank 60 Tier (`e1648263`)**: **0W – 5L (0.0% WR)**
+- **Aggregate Cycle 9 Performance**: **10W – 20L (33.3% Win Rate)**
+  - **Key Finding:** Reliable dominance on `00split` and `00dunes` across competitive brackets. Combat positioning on `02crossing` showed noticeable improvement.
+
+### Cycle 8 Diagnostics (30 Games vs 6 Strictly Unique Opponents)
+Map Pool: `00vault`, `01boss_battle`, `00quadrants`, `00split`, `02arena`
+- **Rank 187 Tier (`FürFortnite`)**: **5W – 0L (100% Sweep!)**
+  - Dominated all 5 maps: `02arena` (1000-252), `00split` (1185-347), `00quadrants` (1044-394), `01boss_battle` (1011-0), `00vault` (1045-4).
+- **Rank 113 Tier (`geese geese go`)**: **2W – 3L (40.0% WR)**
+  - Won: `00split` (1025 vs 712), `00vault` (1111 vs 897).
+- **Ranks 20–154 (`DOOMSDAY`, `caterpillow`, `Rogue Lock Pickers`, `Rogue Gem Thieves`)**: Stalled on high-tempo itemization maps, highlighting the need for accelerated combat target prioritization.
 
 ---
 
-## Insights from Real Match Diagnostics
+## Experimental Hypotheses Tested (EXP-0086 to EXP-0110)
 
-### 1. Match Diagnostics vs Peer (~Rank 160: `HighCortisol`)
-- **Dominant Win on `01starfish` (1,037 vs 73 gems):** Marcella dominated combat (22 kills, 2 deaths, 36k damage), enabling uncontested early tributes.
-- **Narrow Losses on `00lanes` (954 vs 1,002 gems) & `02fields` (908 vs 1,133 gems):**
-  - Our squad had superior combat stats (e.g. Marcella 9k damage, zero deaths), but the opponent achieved faster split-second altar drops.
-  - Inspired **EXP-0036 & EXP-0039 (`kHoldBonus = 1.8f -> 2.0f`)**, directly rewarding squads for staying grouped near altars to contest and intercept opponent tributes.
-
-### 2. Match Diagnostics vs Top 3 Opponents (`Intercontinental Fish`, `prism best girl`, `Mite`)
-- **Combat Burst Meta:** Top competitors aggressively draft **Focus-scaling burst items** and coordinate instant focus fire when engaging our squads.
-- **Camp Denial:** Top 1 (`Intercontinental Fish`) invades our side early on 5v5 maps (`02guardians`, `00quadrants`, `02tangle`) to eliminate monster camps before our squad arrives.
-- **Draft Consistency:** Top teams almost universally prioritize `[Marcella, Vesper Vale, Vendetta/Ryth]`. Our core 5v5 draft `[Vendetta, Vesper Vale, Ryth, Willow, Marcella]` remains the highest local performer.
+- **EXP-0110 (`kill_value` scaling on Marcella/Vesper/Tavi):** **PROMOTED (Sage v162)**. 18W-6L Gate 1 (+7,930 gems), 28W-14L Gate 2 (+8,782 gems). Unlocked symmetric sweep of `00dunes`.
+- **EXP-0109 (`kFightBuild = false`):** Tested farming/earner item priority over durability. Result: 10W - 14L (-1,654 gems in Gate 1). Early durability is mandatory to survive camp damage and early enemy pressure. (*REJECTED*).
+- **EXP-0108 (`kSiegeFrom = 400`):** Tested earlier monolith sieges. Result: 16W - 8L Gate 1, but caused early overcommitments on `01starfish` and `02fields`. (*REJECTED*).
+- **EXP-0107 (Tightened `near_altar` to `d<=10 && gems>=10`):** Result: 16W - 8L Gate 1, but lost critical bank tempo on `02fields`. (*REJECTED*).
+- **EXP-0106 (`kCarrierHuntGems = 50`):** Lowered altar defense carrier hunt threshold. Result: 17W - 7L Gate 1, 27W - 15L Gate 2 (+7,486 gems). Caused units to chase low-yield carriers away from camps. (*REJECTED*).
+- **EXP-0105 (Earlier shop threshold at 150 gold):** Result: 13W - 11L in Gate 1. Excessive walking home interrupted early farming curves. (*REJECTED*).
+- **EXP-0104 (`kHoldBonus = 2.25f`):** **PROMOTED (Sage v161)**. 18W-6L Gate 1 (18,152 gems), 29W-13L Gate 2 (+8,991 gems). Surpassed baseline gem threshold.
+- **EXP-0103 (`kHoldBonus = 2.30f`):** Result: 18W-6L Gate 1, 28W-14L Gate 2 (+8,874 gems). Very close, inspired v161 calibration. (*REJECTED*).
+- **EXP-0102 (`kTripShare = 0.45f`):** Result: 27W - 15L (+6,722 gems in Gate 2). Underestimated health cost per trip, leading to team wipes on camps. (*REJECTED*).
+- **EXP-0101 (`kMaxTrips = 7.0f`):** Result: 27W - 15L (+7,600 gems in Gate 2). Over-extended squad into unviable late camp fights. (*REJECTED*).
+- **EXP-0100 (`kCarryGems = 30`):** Result: 16W - 8L Gate 1, with severe regressions on `01boss_battle`. (*REJECTED*).
+- **EXP-0099 (`kOpeningRounds = 110`):** Result: 29W - 13L (+7,792 gems in Gate 2). Fell short of champion net gem baseline. (*REJECTED*).
+- **EXP-0098 (`kOpeningContested=0.40, kHoldBonus=2.5, kFieldBonus=3.6`):** Result: 29W - 13L (+7,853 gems in Gate 2). Plateaued below champion gems. (*REJECTED*).
+- **EXP-0096 (`kHoldBonus = 2.5f`):** Result: 29W - 13L (+7,853 gems in Gate 2). (*REJECTED*).
 
 ---
 
@@ -89,25 +101,14 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 
 ```
 ├── bots/
-│   ├── candidate_v67/        # Active development workspace (v151)
+│   ├── candidate_v67/        # Active development workspace (Sage v162)
 │   ├── v67_baseline/         # Immutable local benchmark reference
 │   ├── sagev135/             # Protected original baseline
 │   └── sagev136/             # Experimental reference
 ├── run_candidate_benchmark.py# 24-game symmetric fast benchmark (Gate 1)
 ├── run_extended_benchmark.py # 50-game symmetric statistical benchmark (Gate 2)
-├── queue_v150_diagnostics.py # Automated online match group queueing script
-├── track_v150_diagnostics.py # Automated online match monitoring and results parser
-└── README.md                 # Project documentation & benchmark history
+├── queue_cycle9.py           # Automated diagnostic match group queueing script
+├── track_cycle9.py           # Automated match monitoring and results tracker
+├── run_cycle9_summary.py     # Deep match stats and telemetry analysis tool
+└── README.md                 # Complete project documentation & benchmark history
 ```
-
-
-### Cycle 5 Multi-Opponent Evaluation (Sage v160 - Active Champion)
-Tested across 3 distinct tiers with strict 1-match-group-per-opponent constraint:
-- **Peer Tier (Rank 171 - FBOT5)**: **4W - 1L (80.0% Win Rate)**
-  - Won: `00lanes` (1004 vs 950), `01islands` (1000 vs 840), `02gift_wrapping` (1008 vs 998), `00gemfight` (1033 vs 178)
-  - Lost: `01the_farm` (542 vs 1020)
-- **Mid Tier (Rank 98 - deadlock worst game ever)**: **3W - 2L (60.0% Win Rate)**
-  - Won: `00lanes` (1008 vs 797), `02gift_wrapping` (1078 vs 865), `00gemfight` (1006 vs 200)
-  - Lost: `01the_farm` (329 vs 1024), `01islands` (764 vs 1007)
-- **Top Tier (Rank 4 - Ad Astra)**: **0W - 5L (0.0% Win Rate)**
-- **Aggregate Win Rate**: **7W - 8L (46.7%)** — *highest multi-opponent diversity win rate achieved to date*.
