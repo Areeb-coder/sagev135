@@ -33,7 +33,7 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Official Match Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v157** | **EXP-0071** | Calibrate kMaxTrips = 6.0f (optimal camp round-trip siege threshold, broke +10k net gems!) | **19W - 5L** (+6,979 gems) | **30W - 12L (+10,035 gems)** | Active on platform | **ACTIVE CHAMPION** 🏆 |
+| **v157** | **EXP-0071** | Calibrate kMaxTrips = 6.0f (optimal camp round-trip siege threshold, broke +10k net gems!) | **19W - 5L** (+6,979 gems) | **30W - 12L (+10,035 gems)** | **4-6 (40% WR vs Peer Rank 160)**: Won 01starfish & 02fields symmetrically | **ACTIVE CHAMPION** 🏆 |
 | **v156** | **EXP-0070** | Calibrate kMaxTrips = 5.5f (further relaxed siege round-trip limit for complex maps) | **19W - 5L** (+6,884 gems) | **30W - 12L (+9,940 gems)** | Active on platform | **Superseded by v157** 🏆 |
 | **v155** | **EXP-0066** | Calibrate kMaxTrips = 5.0f (further expanded camp round-trip ceiling for sieges) | **19W - 5L** (+7,278 gems) | **30W - 12L (+9,884 gems)** | Active on platform | **Superseded by v156** 🏆 |
 | **v154** | **EXP-0058** | Calibrate kMaxTrips = 4.5f (allow more camp round-trips before declaring unreachable siege) | **19W - 5L** (+7,318 gems) | **29W - 13L (+9,808 gems)** | Superseded by v155 | Baseline |

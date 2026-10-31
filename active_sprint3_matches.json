@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "id": "cbac4a28-14d2-4b4d-b376-78b279e137e9",
+      "team": "cronjohn",
+      "rank": 160,
+      "tier": "Peer"
+    },
+    {
+      "id": "506facae-4860-4142-8751-40c51c0067f0",
+      "team": "German Empire",
+      "rank": 11,
+      "tier": "High-Elo Aggressor"
+    },
+    {
+      "id": "40098f5a-2658-4f80-a1ec-3b0193c80b3a",
+      "team": "Intercontinental Fish",
+      "rank": 1,
+      "tier": "Meta Apex"
+    }
+  ]
+}
