@@ -38,6 +38,8 @@ The pipeline enforces a multi-dimensional, evidence-based evaluation model balan
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Multi-Opponent / Ladder Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
+| **v164** | **EXP-0120** | **Tactical Ranged Kiting:** Ranged units step back from adjacent melee threats when healthy to maintain range advantage | **12W - 12L (0)** | **28W - 14L (+8,782)** | **Sweeps 00dunes, 01boss_battle, 02crossing** | **ACTIVE CHAMPION** |
+| **v163** | **EXP-0116b** | **Heart of Ruin Dynamic Targeting:** <45% HP 1.8x execution, >=45% HP 0.65x de-priority | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 125-match diagnostic corpus | **Predecessor Champion** |
 | **v162** | **EXP-0110** | **Combat Targeting Intelligence:** Weight high-threat carries (`Marcella 1.45x, Vesper 1.35x, Tavi 1.20x`) | **18W – 6L (+7,930)** | **28W – 14L (+8,782)** | **Sweeps `00dunes` symmetrically (977-212 & 705-108)** | **ACTIVE CHAMPION** 🏆 |
 | **v161** | **EXP-0104** | **Altar Cohesion Calibration:** Fine-tuned `kHoldBonus = 2.25f` to break the gem accumulation ceiling | **18W – 6L (+7,168)** | **29W – 13L (+8,991)** | **Cycle 8: 7W – 23L** (5-0 sweep vs FürFortnite Rank 187, 2-3 vs geese geese go Rank 113) | **Fallback Champion** 🏆 |
 | **v160** | **EXP-0085** | **Opportunistic Banking:** Detour to altar when `d <= 12 && gems >= 5` or `d <= 5` | **18W – 6L (+6,840)** | **29W – 13L (+8,589)** | Cycle 7: 11W - 19L (36.7% WR across 6 distinct opponents) | Superseded by v161 |
