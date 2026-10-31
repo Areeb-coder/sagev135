@@ -271,7 +271,7 @@ constexpr bool kHoldCapture = true;
 constexpr bool kMarcellaBank = true;
 constexpr int kBankerReach = 8;
 constexpr int kBankerClaim = 14;
-constexpr int kBankerCarry = 20;
+constexpr int kBankerCarry = 16;  // EXP-0136: Lower Marcella banking threshold to protect carrier gems
 // Solo camps. The squad takes one camp at a time, and in that game never cleared the wolf
 // nearest our spawn (the other team cleared theirs 11 times). One champion may take a
 // fighting camp on our side alone when the forecast says it costs under kSoloShare of its health.
