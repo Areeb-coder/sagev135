@@ -4,10 +4,10 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v153**
-- **Live Submission ID:** 39997db3-8d0c-432e-af31-0fe5285d8f6e
+## Current Active Champion: **Sage v154**
+- **Live Submission ID:** Version 154
 - **Git Commit:** `a9922b9` on branch `experiment/candidate-v67-improvements`
-- **Peak Performance:** **29W – 13L (+9,735 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
+- **Peak Performance:** **29W – 13L (+9,808 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
 
 ---
 
