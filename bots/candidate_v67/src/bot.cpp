@@ -1149,8 +1149,15 @@ float Bot::kill_value(const SeenChamp& e) const {
     if (e.type == bc::champion_type::marcella) v *= 1.45f;
     if (e.type == bc::champion_type::vesper_vale) v *= 1.35f;
     if (e.type == bc::champion_type::tavi) v *= 1.20f;  // EXP-0110: prioritize eliminating Tavi (high focus stunner)
-    // Heart of Ruin is extremely durable and gains +50% damage when low; avoid wasting focus fire on him while carries live
-    if (e.type == bc::champion_type::heart_of_ruin) v *= 0.5f;
+    // EXP-0116: Dynamic Heart of Ruin targeting. At full health he is tanky, but when wounded his
+    // damage scales up to +50% from bleed. Prioritize executing him when wounded to prevent team wipes.
+    if (e.type == bc::champion_type::heart_of_ruin) {
+        if (e.hp < e.max_hp * 0.45f) {
+            v *= 1.8f;  // critical execution threshold: finish before his peak bleed DPS wipes us
+        } else {
+            v *= 0.65f; // avoid overfocusing full-health HoR while high-DPS carries live
+        }
+    }
     if (e.hp <= strength_ * 1.05f) v *= 4.f;  // dies to our next hit
     return v;
 }
