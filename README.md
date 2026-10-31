@@ -38,6 +38,7 @@ The pipeline enforces a multi-dimensional, evidence-based evaluation model balan
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Multi-Opponent / Ladder Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
+| **v165** | **EXP-0122** | **Stellar Priority Execution:** Scaled targeting for enemy Stellar (1.30x) to eliminate long-range snipe carries | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 Cycle 2 data: 19.4% WR vulnerability patched | **ACTIVE CHAMPION** |
 | **v164** | **EXP-0120** | **Tactical Ranged Kiting:** Ranged units step back from adjacent melee threats when healthy to maintain range advantage | **12W - 12L (0)** | **28W - 14L (+8,782)** | **Sweeps 00dunes, 01boss_battle, 02crossing** | **ACTIVE CHAMPION** |
 | **v163** | **EXP-0116b** | **Heart of Ruin Dynamic Targeting:** <45% HP 1.8x execution, >=45% HP 0.65x de-priority | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 125-match diagnostic corpus | **Predecessor Champion** |
 | **v162** | **EXP-0110** | **Combat Targeting Intelligence:** Weight high-threat carries (`Marcella 1.45x, Vesper 1.35x, Tavi 1.20x`) | **18W – 6L (+7,930)** | **28W – 14L (+8,782)** | **Sweeps `00dunes` symmetrically (977-212 & 705-108)** | **ACTIVE CHAMPION** 🏆 |
