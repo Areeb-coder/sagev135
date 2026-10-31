@@ -1149,6 +1149,8 @@ float Bot::kill_value(const SeenChamp& e) const {
     if (e.type == bc::champion_type::marcella) v *= 1.45f;
     if (e.type == bc::champion_type::vesper_vale) v *= 1.35f;
     if (e.type == bc::champion_type::tavi) v *= 1.20f;  // EXP-0110: prioritize eliminating Tavi (high focus stunner)
+    // EXP-0122: Stellar focus target - ranged snipe carry vulnerable to focused burst
+    if (e.type == bc::champion_type::stellar) v *= 1.30f;
     // EXP-0116: Dynamic Heart of Ruin targeting. At full health he is tanky, but when wounded his
     // damage scales up to +50% from bleed. Prioritize executing him when wounded to prevent team wipes.
     if (e.type == bc::champion_type::heart_of_ruin) {
