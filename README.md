@@ -4,10 +4,10 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v157**
-- **Live Submission ID:** Version 157
-- **Git Commit:** 7e7d173 on branch experiment/candidate-v67-improvements
-- **Peak Performance:** **30W – 12L (+10,035 net gems)** across the full 50-game statistical benchmark (25 maps $\\times$ 2 sides symmetrically).
+## Current Active Champion: **Sage v158**
+- **Live Submission ID:** Version 158
+- **Git Commit:** 8cef948 on branch experiment/candidate-v67-improvements
+- **Peak Performance:** **28W – 14L (+8,863 net gems)** | **40% WR vs Peer Rank 160 (2W-3L, 100% win on starfish & fields)**
 
 ---
 
@@ -33,7 +33,8 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Official Match Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v157** | **EXP-0071** | Calibrate kMaxTrips = 6.0f (optimal camp round-trip siege threshold, broke +10k net gems!) | **19W - 5L** (+6,979 gems) | **30W - 12L (+10,035 gems)** | **4-6 (40% WR vs Peer Rank 160)**: Won 01starfish & 02fields symmetrically | **ACTIVE CHAMPION** 🏆 |
+| **v158** | **EXP-0075** | Adapt 3v3 draft to [Vesper, Marcella, Ryth] to secure front-line CC | 17W - 7L (+5,786) | 28W - 14L (+8,863) | **2W - 3L vs Rank 160 cronjohn** (wins starfish & fields) | **ACTIVE CHAMPION** 🏆 |
+| **v157** | **EXP-0071** | Calibrate kMaxTrips = 6.0f (optimal camp round-trip siege threshold, broke +10k net gems!) | **19W - 5L** (+6,979 gems) | **30W - 12L (+10,035 gems)** | **4-6 (40% WR vs Peer Rank 160)**: Won 01starfish & 02fields symmetrically | **Fallback Champion Baseline** 🏆 |
 | **v156** | **EXP-0070** | Calibrate kMaxTrips = 5.5f (further relaxed siege round-trip limit for complex maps) | **19W - 5L** (+6,884 gems) | **30W - 12L (+9,940 gems)** | Active on platform | **Superseded by v157** 🏆 |
 | **v155** | **EXP-0066** | Calibrate kMaxTrips = 5.0f (further expanded camp round-trip ceiling for sieges) | **19W - 5L** (+7,278 gems) | **30W - 12L (+9,884 gems)** | Active on platform | **Superseded by v156** 🏆 |
 | **v154** | **EXP-0058** | Calibrate kMaxTrips = 4.5f (allow more camp round-trips before declaring unreachable siege) | **19W - 5L** (+7,318 gems) | **29W - 13L (+9,808 gems)** | Superseded by v155 | Baseline |
