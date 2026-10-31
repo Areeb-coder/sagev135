@@ -4,7 +4,7 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v159**
+## Current Active Champion: **Sage v160**
 - **Live Submission ID:** Version 158
 - **Git Commit:** 8cef948 on branch experiment/candidate-v67-improvements
 - **Peak Performance:** **28W – 14L (+8,863 net gems)** | **40% WR vs Peer Rank 160 (2W-3L, 100% win on starfish & fields)**
