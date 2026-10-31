@@ -4,10 +4,10 @@ Autonomous, evidence-driven optimization pipeline for the **Sage** Battlecode bo
 
 ---
 
-## Current Active Champion: **Sage v154**
-- **Live Submission ID:** Version 154
-- **Git Commit:** `a9922b9` on branch `experiment/candidate-v67-improvements`
-- **Peak Performance:** **29W – 13L (+9,808 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
+## Current Active Champion: **Sage v155**
+- **Live Submission ID:** Version 155
+- **Git Commit:** e39e7c4 on branch experiment/candidate-v67-improvements
+- **Peak Performance:** **30W – 12L (+9,884 net gems)** across the full 50-game statistical benchmark (25 maps $\times$ 2 sides symmetrically).
 
 ---
 
@@ -33,7 +33,9 @@ The pipeline enforces a strict, two-gate statistical non-regression model:
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Official Match Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v153** | **EXP-0047** | Calibrate kTripShare = 0.50f (higher squad fight sustain before retreat) | **19W – 5L** (+6,945 gems) | **29W – 13L (+9,735 gems)** | Queueing next cycle | **ACTIVE CHAMPION** 👑 |
+| **v155** | **EXP-0066** | Calibrate kMaxTrips = 5.0f (further expanded camp round-trip ceiling for sieges) | **19W - 5L** (+7,278 gems) | **30W - 12L (+9,884 gems)** | Active on platform | **ACTIVE CHAMPION** 🏆 |
+| **v154** | **EXP-0058** | Calibrate kMaxTrips = 4.5f (allow more camp round-trips before declaring unreachable siege) | **19W - 5L** (+7,318 gems) | **29W - 13L (+9,808 gems)** | Superseded by v155 | Baseline |
+| **v153** | **EXP-0047** | Calibrate kTripShare = 0.50f (higher squad fight sustain before retreat) | **19W – 5L** (+6,945 gems) | **29W – 13L (+9,735 gems)** | Queueing next cycle | **Superseded** 👑 |
 | **v152** | **EXP-0043** | Calibrate kHoldBonus = 2.2f (peak contested altar priority & defensive grouping) | **19W – 5L** (+7,075 gems) | **30W – 12L (+9,685 gems)** | Queueing next cycle | Promoted -> Superseded |
 | **v151** | **EXP-0039** | Calibrate `kHoldBonus = 2.0f` (tighter squad grouping at contested altars) | **18W – 6L** (+6,680 gems) | **29W – 13L (+9,611 gems)** | Queueing next cycle | Promoted -> Superseded |
 | **v150** | **EXP-0036** | Tune `kHoldBonus = 1.8f` (from 1.5f) to prevent enemy tributes | **18W – 6L** (+6,482 gems) | **29W – 13L (+9,355 gems)** | 1-4 vs HighCortisol (1037-73 on starfish) | Promoted -> Superseded |
