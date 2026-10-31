@@ -38,7 +38,8 @@ The pipeline enforces a multi-dimensional, evidence-based evaluation model balan
 
 | Version | Experiment | Key Changes / Strategic Hypothesis | Gate 1 (24g) | Gate 2 (50g Extended) | Multi-Opponent / Ladder Results | Status |
 |:---:|:---:|---|:---:|:---:|:---:|:---:|
-| **v168** | **EXP-0126** | **Tavi Area-Stun Priority Execution:** Scaled targeting for enemy Tavi (1.20x -> 1.35x) to eliminate disruptive area stuns | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 Cycle 4 data: neutralizes high-focus stunner | **ACTIVE CHAMPION** |
+| **v169** | **EXP-0128** | **Varg Priority Execution (Ranked Analysis):** Elevated Varg cleave execution multiplier (1.25x -> 1.35x) to counter AoE melee carry attrition | **12W - 12L (0)** | **28W - 14L (+8,782)** | Ranked losses evidence: 100% presence in recent defeats | **ACTIVE CHAMPION** |
+| **v168** | **EXP-0126** | **Tavi Area-Stun Priority Execution:** Scaled targeting for enemy Tavi (1.20x -> 1.35x) to eliminate disruptive area stuns | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 Cycle 4 data: neutralizes high-focus stunner | **PROMOTED** |
 | **v167** | **EXP-0125** | **Varg Cleave Priority Targeting:** Scaled execution weighting for enemy Varg (1.25x) to eliminate splash melee carries | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 Cycle 3 data: 18.8% WR vulnerability countered | **PROMOTED** |
 | **v166** | **EXP-0123** | **Prism Focus Priority Execution:** Scaled targeting for enemy Prism (1.25x) to neutralize gem-burst beam carry | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 Cycle 2 data: 20.5% WR vulnerability addressed | **ACTIVE CHAMPION** |
 | **v165** | **EXP-0122** | **Stellar Priority Execution:** Scaled targeting for enemy Stellar (1.30x) to eliminate long-range snipe carries | **12W - 12L (0)** | **28W - 14L (+8,782)** | Strategy X.0 Cycle 2 data: 19.4% WR vulnerability patched | **ACTIVE CHAMPION** |
