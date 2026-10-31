@@ -238,7 +238,7 @@ constexpr float kDashKill = 2.f;  // Local v43 trial: dash earlier to finish rea
 constexpr bool kFieldCamp = true;
 constexpr int kFieldGroups = 3;
 constexpr int kFieldGems = 50;
-constexpr float kFieldBonus = 3.f;  // siege-v8: prioritize gem fields harder (was 3.0)
+constexpr float kFieldBonus = 3.2f;  // EXP-0073 retest vs v158 baseline  // siege-v8: prioritize gem fields harder (was 3.0)
 // Scout wards. Ladder teams re-place their ward about every 12 rounds (a quarter of the time in a
 // bush) and land the first hit in more fights; ours sat at old capture spots (every 68 rounds,
 // 1% in bushes). Whenever the ward is ready and we have moved on, re-place it within 2 tiles,
@@ -2839,8 +2839,9 @@ int Bot::best_altar(int& distance) {
         if (i == altar_choice_ && d != kUnreached) d -= 3;
         // An enemy lock costs five attacks to clear: prefer another altar unless far.
         if (i < 32 && round_ - enemy_lock_round_[i] < 150 && d != kUnreached) d += 12;
-        if (kAltarDanger && gems_ >= kEscortBag && d != kUnreached) d += altar_danger(W.altars[i]);
-        if (kAltarExposure > 0 && gems_ >= kEscortBag && d != kUnreached) d += kAltarExposure * altar_exposure(W.altars[i]);
+        const bool final_sprint = static_cast<int>(bc::global_submitted_gems(team::ally)) + gems_ >= static_cast<int>(bc::constants::winning_gems);
+        if (!final_sprint && kAltarDanger && gems_ >= kEscortBag && d != kUnreached) d += altar_danger(W.altars[i]);
+        if (!final_sprint && kAltarExposure > 0 && gems_ >= kEscortBag && d != kUnreached) d += kAltarExposure * altar_exposure(W.altars[i]);
         if (d < distance) {
             distance = d;
             best = i;
@@ -2939,8 +2940,11 @@ bool Bot::tribute(bc::champion& me) {
     const bool endgame = remaining <= d + channel + 25 || tiebreak_rush;
     // Close to the finish every carried gem counts: teammates' bags together may win.
     const bool wins = bc::global_submitted_gems(team::ally) + gems_ + 150 >= bc::constants::winning_gems;
+    const bool decisive_win = static_cast<int>(bc::global_submitted_gems(team::ally)) + gems_ >= static_cast<int>(bc::constants::winning_gems);
     // Sprint finish: when team has 800+ gems, bank at 10 gems to rapidly secure the win
-    const bool sprint_finish = bc::global_submitted_gems(team::ally) >= 800 && gems_ >= 10;
+    // EXP-0078: dynamic sprint banking. When close to victory, drop carry threshold to finish decisively
+    const uint32_t ally_gems = bc::global_submitted_gems(team::ally);
+    const bool sprint_finish = (ally_gems >= 900 && gems_ >= 5) || (ally_gems >= 800 && gems_ >= 10) || (ally_gems >= 700 && gems_ >= 18);
     // With small bags, enemies seen in the last few rounds count too: they are still about.
     const bool threatened = kSmallBags ? enemy_recent(kRecentEnemy) : !enemies_.empty();
     constexpr bool kWaitBank = true;
@@ -2960,7 +2964,7 @@ bool Bot::tribute(bc::champion& me) {
         return false;
     }
     const vec2 altar = world().altars[a];
-    if (kSafeAltar && !endgame && !wins) {
+    if (kSafeAltar && !endgame && !wins && !decisive_win) {
         if (round_ < altar_wait_until_) return false;
         // Enemies hold the altar and we do not outnumber them: dying here hands them the bag.
         // Farm for a while and come back.
@@ -2974,7 +2978,7 @@ bool Bot::tribute(bc::champion& me) {
             return false;
         }
     }
-    if (kBankEscort && !endgame && !wins && !(kCalmNoEscort && calm()) && gems_ >= (kTeamBank ? kEscortBag / 2 : kEscortBag) && escort_wait_ < 8 && cheb(pos_, altar) <= 9 &&
+    if (kBankEscort && !endgame && !wins && !decisive_win && !(kCalmNoEscort && calm()) && gems_ >= (kTeamBank ? kEscortBag / 2 : kEscortBag) && escort_wait_ < 8 && cheb(pos_, altar) <= 9 &&
         cheb(pos_, altar) > bc::constants::submit_gems_range && altar_exposure(altar) > 0) {
         // An altar in the middle: let the teammate walking with us catch up before going in.
         bool with = false, coming = false;
