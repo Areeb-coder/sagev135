@@ -159,7 +159,7 @@ constexpr bool kClusterSolos = false;
 constexpr bool kSoloSafe = true;
 constexpr int kSoloDangerRounds = 10;  // test further reduction from 20 to 15
 constexpr bool kHoldMiddle = true;
-constexpr float kHoldBonus = 2.2f;  // siege-v8: stronger squad grouping near contested altars (was 1.5)
+constexpr float kHoldBonus = 2.25f;  // siege-v8: stronger squad grouping near contested altars (was 1.5)
 constexpr std::uint64_t kClusterPlanFloor = 35000;
 // v23 test against Inter Fish (0-5, 0-1,037 on 00vault, 0-1,120 on 00stampede): we won 2 of 77
 // fights and lost 81 champions to their 4; even outnumbering them we dealt 22k to their 37k, their
@@ -1146,10 +1146,20 @@ float Bot::kill_value(const SeenChamp& e) const {
     float v = std::max(e.dps, 1.f) / std::max(e.hp, 1.f);
     if (e.type == bc::champion_type::cassi) v *= 2.f;  // her death takes Issac with her
     // High-priority targets: Marcella (high burst/economy carry) and Vesper Vale (high ranged DPS)
-    if (e.type == bc::champion_type::marcella) v *= 1.35f;
-    if (e.type == bc::champion_type::vesper_vale) v *= 1.25f;
-    // Heart of Ruin is extremely durable and gains +50% damage when low; avoid wasting focus fire on him while carries live
-    if (e.type == bc::champion_type::heart_of_ruin) v *= 0.5f;
+    if (e.type == bc::champion_type::marcella) v *= 1.45f;
+    if (e.type == bc::champion_type::vesper_vale) v *= 1.35f;
+    if (e.type == bc::champion_type::tavi) v *= 1.35f;
+    if (e.type == bc::champion_type::prism) v *= 1.25f;
+    if (e.type == bc::champion_type::varg) v *= 1.35f;
+    // Dynamic Heart of Ruin targeting: focus down low-HP HoR before +50% bleed DPS wipes squad
+    if (e.type == bc::champion_type::heart_of_ruin) {
+        if (e.hp < e.max_hp * 0.45f) v *= 1.8f;
+        else v *= 0.65f;
+    }
+    // Carrier Bounty: prioritize intercepting enemy champions hoarding gems before altars
+    if (e.gems > 0) {
+        v *= (1.0f + std::min(static_cast<float>(e.gems) * 0.02f, 0.60f));
+    }
     if (e.hp <= strength_ * 1.05f) v *= 4.f;  // dies to our next hit
     return v;
 }
@@ -2940,7 +2950,8 @@ bool Bot::tribute(bc::champion& me) {
     // Close to the finish every carried gem counts: teammates' bags together may win.
     const bool wins = bc::global_submitted_gems(team::ally) + gems_ + 150 >= bc::constants::winning_gems;
     // Sprint finish: when team has 800+ gems, bank at 10 gems to rapidly secure the win
-    const bool sprint_finish = bc::global_submitted_gems(team::ally) >= 800 && gems_ >= 10;
+    const uint32_t ally_gems = bc::global_submitted_gems(team::ally);
+    const bool sprint_finish = (ally_gems >= 900 && gems_ >= 5) || (ally_gems >= 800 && gems_ >= 10) || (ally_gems >= 700 && gems_ >= 18);
     // With small bags, enemies seen in the last few rounds count too: they are still about.
     const bool threatened = kSmallBags ? enemy_recent(kRecentEnemy) : !enemies_.empty();
     constexpr bool kWaitBank = true;
