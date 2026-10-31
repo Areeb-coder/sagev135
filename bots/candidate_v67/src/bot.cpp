@@ -2956,7 +2956,7 @@ bool Bot::tribute(bc::champion& me) {
     }
     // siege-v3: smart detour threshold. Detour up to 10 tiles only if carrying at least 10 gems;
     // or detour up to 4 tiles for any gems. This stops units abandoning camps to bank 2 gems!
-    const bool near_altar = (d <= 10 && gems_ >= 6) || d <= 4;
+    const bool near_altar = (d <= 12 && gems_ >= 5) || d <= 5; // EXP-0085: opportunistic altar deposit
     const bool want = gems_ >= carry_gems() || endgame || wins || sprint_finish || near_altar || wait_bank || (threatened && gems_ >= kSmallBag) ||
                       task_ == Task::other;
     if (!want) {
