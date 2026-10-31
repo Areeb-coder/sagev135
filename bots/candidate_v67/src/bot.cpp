@@ -1148,7 +1148,7 @@ float Bot::kill_value(const SeenChamp& e) const {
     // High-priority targets: Marcella (high burst/economy carry) and Vesper Vale (high ranged DPS)
     if (e.type == bc::champion_type::marcella) v *= 1.45f;
     if (e.type == bc::champion_type::vesper_vale) v *= 1.35f;
-    if (e.type == bc::champion_type::tavi) v *= 1.20f;  // EXP-0110: prioritize eliminating Tavi (high focus stunner)
+    if (e.type == bc::champion_type::tavi) v *= 1.35f;  // EXP-0126: prioritize eliminating Tavi (high focus stunner)
     // EXP-0122: Stellar focus target - ranged snipe carry vulnerable to focused burst
     if (e.type == bc::champion_type::stellar) v *= 1.30f;
     // EXP-0123: Prism focus target - gem amplifier & beam burst carry (20.5% WR vulnerability in X.0)
