@@ -1155,6 +1155,10 @@ float Bot::kill_value(const SeenChamp& e) const {
     if (e.type == bc::champion_type::prism) v *= 1.25f;
     // EXP-0125: Varg cleave execution target - eliminate splash melee carry (18.8% WR vulnerability in X.0)
     if (e.type == bc::champion_type::varg) v *= 1.35f;  // EXP-0128: elevated Varg splash execution from 1.25x -> 1.35x based on ranked losses
+    // EXP-0130: Ryth priority targeting. Ryth is a 1200 HP frontline tank with area stun present in 100% of ranked losses. Boost priority when carrying gems or below 60% HP to break altar blockades.
+    if (e.type == bc::champion_type::ryth) {
+        if (e.gems > 0 || e.hp < e.max_hp * 0.60f) v *= 1.25f;
+    }
     // EXP-0116: Dynamic Heart of Ruin targeting. At full health he is tanky, but when wounded his
     // damage scales up to +50% from bleed. Prioritize executing him when wounded to prevent team wipes.
     if (e.type == bc::champion_type::heart_of_ruin) {
