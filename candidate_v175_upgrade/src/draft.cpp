@@ -53,7 +53,7 @@ void play_draft() {
     // with five: the list above gave us Vendetta, Vesper Vale and Ryth, who died 6-7 times each a
     // game. Without Vendetta and with both stunners (Marcella, Tavi), the 14 small-team maps went
     // 173/196 against 147/196 locally.
-    constexpr std::array kSmall{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::ryth, champion_draft::vendetta, champion_draft::tavi, champion_draft::willow, champion_draft::varg, champion_draft::heart_of_ruin};
+    constexpr std::array kSmall{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::ryth, champion_draft::tavi, champion_draft::vendetta, champion_draft::willow, champion_draft::varg, champion_draft::heart_of_ruin};
     constexpr std::array kThree{champion_draft::vesper_vale, champion_draft::marcella, champion_draft::ryth, champion_draft::vendetta, champion_draft::tavi, champion_draft::willow, champion_draft::varg, champion_draft::heart_of_ruin};
     const int team_size = cambc::draft::team_size();
     const bool small_team = team_size <= 4;

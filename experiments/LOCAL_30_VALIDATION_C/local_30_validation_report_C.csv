@@ -1,0 +1,16 @@
+Map,Size,Candidate_Wins,Baseline_Wins,Candidate_Gems,Baseline_Gems,Net_Gem_Delta,Outcome
+00anvil,3v3,1,1,1115,1067,48,DRAW
+00packs,3v3,1,1,1262,1226,36,DRAW
+01broken_curve,3v3,1,1,1524,1799,-275,DRAW
+02arena,3v3,2,0,1751,632,1119,CAND_WIN
+02the_pack,3v3,0,2,1614,1829,-215,BASE_WIN
+00oasis,4v4,1,1,926,926,0,DRAW
+00reverse_spiral,4v4,1,1,1714,1714,0,DRAW
+01hooks,4v4,1,1,1232,1232,0,DRAW
+01shortcut,4v4,1,1,1256,1256,0,DRAW
+02guardians,4v4,1,1,382,382,0,DRAW
+00expanse,5v5,1,1,1956,1956,0,DRAW
+01yellow_brick_road,5v5,1,1,1018,1018,0,DRAW
+02fields,5v5,1,1,1716,1716,0,DRAW
+02geodes,5v5,1,1,1973,1973,0,DRAW
+00lanes,5v5,1,1,1800,1800,0,DRAW
