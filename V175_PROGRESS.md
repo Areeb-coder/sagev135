@@ -38,8 +38,18 @@
   - **Match Record**: 5W - 5L Baseline (50.0% Win Rate, +4 net gems). Open 5v5 maps were bit-for-bit identical (+0 delta).
 - **Decision**: **REJECTED / REVERTED**. Candidate restored to purely validated EXP-0176-A code to maintain clean, validated gains without unnecessary modifications.
 
+### EXP-0176-C: Retain Tavi Stun in 4v4 + Ryth Frontline in 3v3 (Non-Regression Solution)
+- **Hypothesis**: In 4v4, Tavi's remote shopping + stun provides high late-game DPS and camp clearing that beats Vendetta (`02guardians`, `01shortcut`). Restoring Tavi in `kSmall` while keeping Ryth in `kThree` eliminates the 4v4 regression while retaining 100% of the +713 net gem 3v3 gains.
+- **Controlled 30-Match Local Benchmark (15 Diverse Maps, Side-Swapped)**:
+  - **Total Result**: Candidate **15W - 15L** Baseline (50.0% WR).
+  - **Net Gems**: Candidate 21,239 vs Baseline 20,526 (**+713 Net Gems**).
+  - **3v3 Maps**: **+713 net gems** (Swept `02arena` 2-0 with +1,119 gems, `00anvil` +48, `00packs` +36).
+  - **4v4 Maps**: **5W - 5L, +0 Net Gems (Zero regression across all 5 maps)**.
+  - **5v5 Maps**: **5W - 5L, +0 Net Gems (Zero regression across all 5 maps)**.
+- **Decision**: **PASSED**. Committed as `b17afbf` and pushed to GitHub.
+
 ## Packaged Release Candidate
-- **Package**: `bots/v176_candidate_EXP0176A.zip` (69,517 bytes).
-- **Changes**: EXP-0176-A (+1,141 net gems vs v175 baseline, 60% win rate on small maps).
-- **Ready for Submission & Diagnostics**:
-  - `cambc submit bots/v176_candidate_EXP0176A.zip -n "Sage v176: EXP-0176-A Ryth small-team frontline (+1141 gems)"`
+- **Package**: `bots/v176_candidate_EXP0176C.zip` (69,518 bytes).
+- **Validated Net Advantage**: **+713 net gems** vs protected v175 baseline with **zero regressions** on 4v4 and 5v5 maps.
+- **Git Commit**: `b17afbf` on branch `experiment/v175-autonomous-upgrade`.
+
